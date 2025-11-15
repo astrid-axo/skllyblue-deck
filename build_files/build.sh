@@ -9,17 +9,16 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-dnf5 copr -y enable hhd-dev/hhd
-dnf5 install -y hhd adjustor hhd-ui
-dnf5 copr -y disable hhd-dev/hhd
+# dnf5 copr -y enable hhd-dev/hhd
+# dnf5 install -y hhd adjustor hhd-ui
+# dnf5 copr -y disable hhd-dev/hhd
+# 
+# dnf5 remove -y godot codium
 
-dnf5 remove -y godot codium
+dnf5 -y copr enable vdanielmo/git-credential-manager 
+dnf5 -y install git-credential-manager
+dnf5 -y copr disable vdanielmo/git-credential-manager
 
-cd /tmp
-git clone https://github.com/Kethen/fedora_deck
-cd fedora_deck/audio/usr/share/alsa/
-
-cp -r  ucm2 /usr/share/alsa/ucm2
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
